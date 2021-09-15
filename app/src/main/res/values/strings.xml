@@ -1,3 +1,27 @@
 <resources>
     <string name="app_name">Alpha</string>
+    <string name="gender">Gender</string>
+    <string name="your_age">Your age</string>
+    <string name="first_name">first name</string>
+    <string name="your_phone_number">Your phone number</string>
+    <string name="enter_your_email_id">Enter your email id</string>
+    <string name="last_name">Last name</string>
+    <string name="middle_name">middle name</string>
+    <string name="password">Password</string>
+    <string name="confirm_password">Confirm password</string>
+    <string name="already_have_an_account_log_in">Already have an account?Log in</string>
+    <string name="sign_up">Sign Up</string>
+
+    <string name="submit">Submit</string>
+    <string name="forgot_password">Forgot Password</string>
+    <string name="email">Email</string>
+    <string name="your_email">Your email</string>
+    <string-array name="age_spinner">
+        <item>Male</item>
+        <item>female</item>
+        <item> Non-binary</item>
+        <item>Prefer not to say</item>
+
+    </string-array>
+
 </resources>

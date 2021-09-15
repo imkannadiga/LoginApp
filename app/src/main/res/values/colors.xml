@@ -11,4 +11,18 @@
     <color name="yellow2">#f5d10d</color>
     <color name="mateblack"> #181818</color>
     <color name="blacky"> #020202</color>
+    <color name="red">#d72631</color>
+    <color name="sea_foam">#a2d5c6 </color>
+    <color name="jade"> #077b8a</color>
+    <color name="violet1"> #5c3c92</color>
+    <color name="tan"> #ecc19c</color>
+    <color name="deep_turquiose">#1e847f</color>
+    <color name="black"> #000000</color>
+    <color name="purple"> #05122d</color>
+    <color name="purple1"> #261342</color>
+    <color name="white"> #FFFFFF</color>
+    <color name="bluish_black">#040720</color>
+    <color name="bluish_black1">#101520</color>
+    <color name="dark_blue">#00008B</color>
+    <color name="gray"> #898989</color>
 </resources>

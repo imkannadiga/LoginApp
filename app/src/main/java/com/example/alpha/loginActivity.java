@@ -17,6 +17,8 @@ public class loginActivity extends AppCompatActivity {
 
     public void login(View view){
 
+
+
     }
 
     public void forgotPassword(View view){
@@ -26,7 +28,7 @@ public class loginActivity extends AppCompatActivity {
     }
 
     public void NewUser(View view){
-       // startActivity(new Intent(this, signupActivity.class));
+        startActivity(new Intent(this, signupActivity.class));
 
     }
 }
