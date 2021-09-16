@@ -17,6 +17,8 @@ public class signupActivity extends AppCompatActivity {
 
 
     public void signin(View view){
+        final loading  loadingDialog = new loading(signupActivity.this);
+        loadingDialog.startLoadingDialog();
 
 
 

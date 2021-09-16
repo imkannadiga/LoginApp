@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/signup2"
+    android:background="@drawable/image3"
     tools:context=".signupActivity">
 
 
@@ -22,36 +22,40 @@
             android:layout_height="match_parent">
 
 
-
+            // first name
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text ="@string/sign_up"
+                android:layout_marginLeft="80dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="75dp"
+                android:layout_marginRight="75dp"
+                android:text="@string/sign_up"
+                android:textColor="@color/bluish_black"
                 android:textSize="48sp"
                 android:textStyle="bold"
-                android:textColor="@color/bluish_black"/>
+                android:layout_marginStart="80dp" />
 
-            // first name
             <EditText
 
                 android:id="@+id/first_name_editText"
-                android:layout_width="330dp"
+                android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginTop="40dp"
                 android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
                 android:layout_marginBottom="5dp"
                 android:background="@drawable/custom_input"
-                android:drawablePadding="12dp"
                 android:ems="10"
                 android:textColor="@color/white"
-
                 android:padding="10dp"
+
+
+
                 android:hint="@string/first_name"
                 android:inputType="textPersonName"
-                android:textColorHint="@color/white"
-                android:autofillHints=""
-                android:layout_marginStart="20dp" />
+                android:textColorHint="@color/white" />
 
 
 
@@ -59,10 +63,11 @@
 // middle name
             <EditText
                 android:id="@+id/middle_name_editText"
-                android:layout_width="330dp"
+                android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
                 android:layout_marginBottom="5dp"
                 android:background="@drawable/custom_input"
                 android:drawablePadding="12dp"
@@ -73,7 +78,7 @@
                 android:textColor="@color/white"
                 android:inputType="textPersonName"
                 android:textColorHint="@color/white"
-                android:layout_marginStart="20dp"
+
                 android:importantForAutofill="no" />
 
 
@@ -81,9 +86,10 @@
             // last name
             <EditText
                 android:id="@+id/last_name_editText"
-                android:layout_width="330dp"
+                android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginBottom="5dp"
                 android:background="@drawable/custom_input"
@@ -95,7 +101,7 @@
                 android:textColor="@color/white"
                 android:inputType="textPersonName"
                 android:textColorHint="@color/white"
-                android:layout_marginStart="20dp"
+
                 android:importantForAutofill="no" />
 
 
@@ -103,10 +109,11 @@
             // email
             <EditText
                 android:id="@+id/emailID_editText"
-                android:layout_width="330dp"
+                android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="5dp"
+                android:layout_marginRight="20dp"
                 android:layout_marginLeft="20dp"
                 android:background="@drawable/custom_input"
                 android:drawablePadding="12dp"
@@ -118,86 +125,136 @@
                 android:inputType="textEmailAddress"
                 android:textColorHint="@color/white"
 
-                android:layout_marginStart="20dp"
+
                 android:importantForAutofill="no" />
 
 
 
             // phone number
-            <EditText
-                android:id="@+id/mobile_editText"
-                android:layout_width="330dp"
-                android:layout_height="40dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="20dp"
-                android:background="@drawable/custom_input"
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
                 android:layout_marginBottom="5dp"
-                android:drawablePadding="12dp"
-                android:ems="10"
+                >
 
-                android:padding="10dp"
-                android:textColor="@color/white"
 
-                android:hint="@string/your_phone_number"
-                android:inputType="numberDecimal"
-                android:textColorHint="@color/white"
+                <com.hbb20.CountryCodePicker
+                    android:id="@+id/ccp"
+                    android:layout_width="125dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginBottom="5dp"
 
-                android:layout_marginStart="20dp"
-                android:importantForAutofill="no" />
+                    app:ccpDialog_textColor="@color/white"
+
+
+
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+
+
+                <EditText
+                    android:id="@+id/mobile_editText"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="5dp"
+
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginBottom="5dp"
+
+                    android:background="@drawable/custom_input"
+                    android:drawablePadding="12dp"
+                    android:ems="10"
+
+                    android:hint="@string/your_phone_number"
+                    android:importantForAutofill="no"
+
+                    android:inputType="numberDecimal"
+                    android:padding="10dp"
+                    android:textColor="@color/white"
+
+
+                    android:textColorHint="@color/white" />
+
+                        </LinearLayout>
+-->
+
+
+
+
+
+
+
+
+
+
+
 
 
             // age
 
-            <EditText
-                android:id="@+id/age_editText"
-                android:layout_width="330dp"
-                android:layout_height="40dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginBottom="5dp"
-                android:background="@drawable/custom_input"
-                android:drawablePadding="12dp"
-                android:ems="10"
-               android:hint="@string/your_age"
-                android:padding="10dp"
-                android:textColor="@color/white"
-                android:inputType="numberDecimal"
-                android:textColorHint="@color/white"
-                android:layout_marginStart="20dp"
-                android:autofillHints="" />
-
-
 
             // gender
 
-            <EditText
-                android:id="@+id/gender_editText"
-                android:layout_width="330dp"
-                android:layout_height="40dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="20dp"
-                android:background="@drawable/custom_input"
-                android:layout_marginBottom="5dp"
-                android:drawablePadding="12dp"
-                android:ems="10"
-                android:hint="@string/gender"
-                android:padding="10dp"
-                android:textColor="@color/white"
-                android:inputType="text"
-                android:textColorHint="@color/white"
-                android:layout_marginStart="20dp"
-                android:autofillHints="" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp">
 
 
+                <Spinner
 
-// password
+                    android:id="@+id/spinner"
+                    android:layout_width="172dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@drawable/custom_input"
+                    android:drawSelectorOnTop="true"
+
+                    android:entries="@array/gender_spinner"
+                    android:padding="10dp" />
+
+                <EditText
+                    android:id="@+id/age_editText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="5dp"
+
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginRight="20dp"
+
+                    android:autofillHints=""
+                    android:background="@drawable/custom_input"
+                    android:drawablePadding="12dp"
+                    android:ems="10"
+                    android:hint="@string/your_age"
+                    android:inputType="numberDecimal"
+                    android:padding="10dp"
+                    android:textColor="@color/white"
+
+                    android:textColorHint="@color/white" />
+
+            </LinearLayout>
+
+
+            // password
+
+
 
             <EditText
                 android:id="@+id/password1_editText"
-                android:layout_width="330dp"
+                android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
                 android:background="@drawable/custom_input"
                 android:layout_marginBottom="5dp"
                 android:drawablePadding="12dp"
@@ -210,8 +267,7 @@
 
                 android:textColorHint="@color/white"
                 android:drawableStart="@drawable/ic_custom_lock"
-                android:autofillHints=""
-                android:layout_marginStart="20dp" />
+                android:autofillHints="" />
 
 
             // confirm password
@@ -219,15 +275,16 @@
 
             <EditText
                 android:id="@+id/password2_editText"
-                android:layout_width="330dp"
+                android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:layout_marginStart="20dp"
+
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
                 android:layout_marginBottom="5dp"
                 android:autofillHints=""
                 android:background="@drawable/custom_input"
-                android:drawableStart="@drawable/ic_custom_lock"
+
                 android:drawableLeft="@drawable/ic_custom_lock"
                 android:drawablePadding="12dp"
                 android:ems="10"
@@ -240,29 +297,27 @@
 
             <Button
                 android:id="@+id/sign_button"
-                android:layout_marginBottom="5dp"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginTop="20dp"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
+
+                android:layout_marginTop="20dp"
                 android:layout_marginRight="20dp"
-                android:textColor="@color/bluish_black"
+                android:layout_marginBottom="5dp"
                 android:background="@drawable/custom_main"
                 android:onClick="signin"
                 android:text="@string/sign_up"
-
-
-                tools:ignore="OnClick" />
+                android:textColor="@color/bluish_black" />
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="20dp"
-                android:layout_marginLeft="50dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="20dp"
-                android:layout_marginRight="50dp"
-                android:onClick="log_In"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="100dp"
 
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginBottom="10dp"
+                android:onClick="log_In"
                 android:text="@string/already_have_an_account_log_in"
                 android:textColor="@color/black"
                 android:textSize="18sp" />

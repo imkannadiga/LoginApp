@@ -14,6 +14,8 @@ public class forgotActivity extends AppCompatActivity {
     }
 
     public void forgot_Password(View view){
+        final loading  loadingDialog = new loading(forgotActivity.this);
+        loadingDialog.startLoadingDialog();
 
     }
 }
