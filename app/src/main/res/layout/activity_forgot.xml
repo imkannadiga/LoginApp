@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/login_background"
+    android:background="@drawable/password"
     tools:context=".forgotActivity">
 
     <TextView
@@ -25,20 +25,26 @@
         android:id="@+id/email_editText2"
         android:layout_width="368dp"
         android:layout_height="54dp"
-        android:background="@drawable/custom_input"
-        android:drawableLeft="@drawable/ic_custom_email"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/custom_input3"
+        android:drawableLeft="@drawable/custom_email2"
         android:drawablePadding="12dp"
         android:ems="10"
-        android:hint="Your email"
+        android:hint="@string/your_email"
+        android:importantForAutofill="no"
         android:inputType="textEmailAddress"
         android:padding="10dp"
+        android:textColor="@color/black"
         android:textColorHint="@android:color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.488"
+        app:layout_constraintHorizontal_bias="0.511"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.46" />
+        app:layout_constraintVertical_bias="0.433" />
 
     <TextView
         android:id="@+id/email_view2"
@@ -50,32 +56,35 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
-        android:text="Email"
-        android:textColor="@android:color/white"
+        android:text="@string/email"
+        android:textColor="@color/black"
         android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.04"
+        app:layout_constraintHorizontal_bias="0.044"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.31" />
+        app:layout_constraintVertical_bias="0.369" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Forgot Password"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="5dp"
+        android:text="@string/forgot_password"
         android:textColor="@color/blacky"
         android:textSize="36sp"
         android:textStyle="bold"
         app:fontFamily="sans-serif-light"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.119"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.083" />
+        app:layout_constraintVertical_bias="0.064" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline8"
@@ -94,11 +103,11 @@
     <Button
 
         android:id="@+id/button3"
-        android:layout_width="250dp"
-        android:layout_height="50dp"
-        android:background="@drawable/custom_main"
+        android:layout_width="229dp"
+        android:layout_height="49dp"
+        android:background="@drawable/custom_input3"
         android:onClick="forgot_Password"
-        android:text="Submit"
+        android:text="@string/submit"
         android:textColor="@color/blacky"
         android:textSize="18sp"
         android:textStyle="bold"
