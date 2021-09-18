@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,9 +22,12 @@ public class loginActivity extends AppCompatActivity {
 
     ProgressBar progressBar;
     Button login_button;
-    TextView email,password,forgotPassword,signup,share;
-
+    TextView forgotPassword,signup,share;
+    EditText email,password;
     FirebaseAuth mAuth;
+
+    private long backPressedTime;
+    private Toast backToast;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,8 +35,8 @@ public class loginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
         login_button = (Button) findViewById(R.id.login_button);
-        email = (TextView) findViewById(R.id.email_editText);
-        password = (TextView) findViewById(R.id.password_edit_text);
+        email = (EditText) findViewById(R.id.email_editText);
+        password = (EditText) findViewById(R.id.password_edit_text);
         forgotPassword= (TextView) findViewById(R.id.forgot);
         signup = (TextView) findViewById(R.id.new_user);
         share = (TextView) findViewById(R.id.share);
@@ -49,7 +53,7 @@ public class loginActivity extends AppCompatActivity {
                     mAuth.signInWithEmailAndPassword(email.getText().toString().trim(),password.getText().toString().trim()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
-                            if(task.isComplete()){
+                            if(task.isSuccessful()){
                                 loading.stopLoading();
                                 Toast.makeText(loginActivity.this, "Login successfull", Toast.LENGTH_SHORT).show();
                                 startActivity(new Intent(loginActivity.this,CommonActivity.class));
@@ -83,7 +87,7 @@ public class loginActivity extends AppCompatActivity {
     }
 
     private boolean validateEmail(){
-        String s = email.getText().toString();
+        String s = email.getText().toString().trim();
         if(s.length()==0){
             email.setError("Email cannot be empty");
             return false;
@@ -96,11 +100,41 @@ public class loginActivity extends AppCompatActivity {
     }
 
     private boolean validatePassword() {
-        String s = password.getText().toString();
+        String s = password.getText().toString().trim();
         if(s.isEmpty()){
             password.setError("Password cannot be empty");
             return false;
         }
         return true;
     }
+
+
+    // press again to exit
+    @Override
+    public void onBackPressed() {
+        if (backPressedTime + 2000 > System.currentTimeMillis()) {
+            backToast.cancel();
+            super.onBackPressed();
+            return;
+        } else {
+            backToast = Toast.makeText(getBaseContext(), "Press back again to exit", Toast.LENGTH_SHORT);
+            backToast.show();
+        }
+
+        backPressedTime = System.currentTimeMillis();
+    }
+
+
+    public void share(View view){
+        Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
+        sharingIntent.setType("text/plain");
+        String shareBody = "link to download app";
+        sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Subject Here");
+        sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
+        startActivity(Intent.createChooser(sharingIntent, "Share via"));
+
+    }
+
+
+
 }
