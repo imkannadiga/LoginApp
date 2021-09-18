@@ -13,9 +13,7 @@ import android.view.LayoutInflater;
     AlertDialog dialog;
 
     loading(Activity myactivity){
-
         activity = myactivity;
-
     }
 
     void startLoadingDialog(){
@@ -28,10 +26,7 @@ import android.view.LayoutInflater;
 
     }
 
-    void endLaddingDialog(){
+    void stopLoading(){
         dialog.dismiss();
     }
-
-
-
 }
