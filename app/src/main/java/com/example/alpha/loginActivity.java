@@ -108,22 +108,18 @@ public class loginActivity extends AppCompatActivity {
         return true;
     }
 
-
-    // press again to exit
     @Override
     public void onBackPressed() {
         if (backPressedTime + 2000 > System.currentTimeMillis()) {
             backToast.cancel();
-            super.onBackPressed();
+            finishAffinity();
             return;
         } else {
             backToast = Toast.makeText(getBaseContext(), "Press back again to exit", Toast.LENGTH_SHORT);
             backToast.show();
         }
-
         backPressedTime = System.currentTimeMillis();
     }
-
 
     public void share(View view){
         Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
@@ -132,9 +128,5 @@ public class loginActivity extends AppCompatActivity {
         sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Subject Here");
         sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
         startActivity(Intent.createChooser(sharingIntent, "Share via"));
-
     }
-
-
-
 }

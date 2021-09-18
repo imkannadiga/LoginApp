@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
@@ -14,18 +15,27 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.hbb20.CountryCodePicker;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.regex.Pattern;
 
 public class signupActivity extends AppCompatActivity {
 
     Button signUp_button;
-    TextView firstName, middleName, lastName, emailId, countryCode,phoneNumber, age, password, confirmPassword, signIn;
+    TextView firstName, middleName, lastName, emailId,phoneNumber, age, password, confirmPassword, signIn;
     Spinner gender;
+    CountryCodePicker countryCode;
     ProgressBar progressBar;
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
     private static final Pattern PASSWORD_PATTERN =
             Pattern.compile("^" +
             "(?=.*[@#$%^&+=])" +     // at least 1 special character
@@ -49,6 +59,7 @@ public class signupActivity extends AppCompatActivity {
         signIn = (TextView) findViewById(R.id.sign_in_insted);
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
         signUp_button = (Button) findViewById(R.id.sign_button);
+        countryCode = (CountryCodePicker) findViewById(R.id.ccp);
 
         signUp_button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,21 +68,45 @@ public class signupActivity extends AppCompatActivity {
                 loading.startLoadingDialog();
                 if(validateInputs()){
                     mAuth = FirebaseAuth.getInstance();
-                    mAuth.createUserWithEmailAndPassword(emailId.getText().toString(), password.getText().toString()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
-                            if(task.isComplete()){
-                                loading.stopLoading();
-                                startActivity(new Intent(signupActivity.this,loginActivity.class));
-                            }
-                            else{
-                                loading.stopLoading();
-                                Toast.makeText(signupActivity.this, "User already exists", Toast.LENGTH_SHORT).show();
-                            }
-                        }
+                    mAuth.createUserWithEmailAndPassword(emailId.getText().toString(), password.getText().toString())
+                            .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                                @Override
+                                public void onComplete(@NonNull Task<AuthResult> task) {
+                                    if(task.isSuccessful()){
+                                        // Create a new user with a first and last name
+                                        Map<String, Object> user = new HashMap<>();
+                                        user.put("first_name", firstName.getText().toString());
+                                        user.put("middle_name", middleName.getText().toString());
+                                        user.put("last_name", lastName.getText().toString());
+                                        user.put("email_id", emailId.getText().toString());
+                                        user.put("Country_Code",countryCode.toString());
+                                        user.put("gender",gender.toString());
+                                        user.put("age",age.getText().toString());
+                                        user.put("password",password.getText().toString());
+
+                                        // Add a new document with a generated ID
+                                        db.collection("users")
+                                                .add(user)
+                                                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                                                    public void onSuccess(DocumentReference documentReference) {
+                                                        loading.stopLoading();
+                                                        Toast.makeText(signupActivity.this, "User registration Successful", Toast.LENGTH_SHORT).show();
+                                                        startActivity(new Intent(signupActivity.this,loginActivity.class));
+                                                    }
+                                                })
+                                                .addOnFailureListener(new OnFailureListener() {
+                                                    @Override
+                                                    public void onFailure(@NonNull Exception e) {
+                                                        Toast.makeText(signupActivity.this, "User registration failed", Toast.LENGTH_SHORT).show();
+                                                    }
+                                                });
+                                    }
+                                    else{
+                                        loading.stopLoading();
+                                        Toast.makeText(signupActivity.this, "User already exists", Toast.LENGTH_SHORT).show();
+                                    }
+                                }
                     });
-                    loading.stopLoading();
-                    //redirect to login activity and make toast saying registration successfull
                 }
                 else{
                     loading.stopLoading();
