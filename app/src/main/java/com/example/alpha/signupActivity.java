@@ -97,6 +97,7 @@ public class signupActivity extends AppCompatActivity {
                                                 .addOnFailureListener(new OnFailureListener() {
                                                     @Override
                                                     public void onFailure(@NonNull Exception e) {
+                                                        loading.stopLoading();
                                                         Toast.makeText(signupActivity.this, "User registration failed", Toast.LENGTH_SHORT).show();
                                                     }
                                                 });
