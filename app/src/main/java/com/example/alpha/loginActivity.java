@@ -124,7 +124,7 @@ public class loginActivity extends AppCompatActivity {
     public void share(View view){
         Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
         sharingIntent.setType("text/plain");
-        String shareBody = "link to download app";
+        String shareBody = "https://drive.google.com/drive/folders/1sytCy_N5vAMC_TVxa3A8elw-gw1Dll-k?usp=sharing";
         sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Subject Here");
         sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
         startActivity(Intent.createChooser(sharingIntent, "Share via"));

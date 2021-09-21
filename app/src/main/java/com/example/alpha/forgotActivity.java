@@ -24,7 +24,6 @@ public class forgotActivity extends AppCompatActivity {
         setContentView(R.layout.activity_forgot);
         resetmail = (EditText)findViewById(R.id.reset_email);
         fAuth = FirebaseAuth.getInstance();
-
     }
 
     public void forgot_Password(View view){
@@ -44,8 +43,5 @@ public class forgotActivity extends AppCompatActivity {
                 Toast.makeText(forgotActivity.this, "Error ! Reset Link is Not Sent" + e.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
-
-
-
     }
 }

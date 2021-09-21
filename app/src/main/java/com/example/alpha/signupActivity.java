@@ -8,7 +8,9 @@ import android.os.Bundle;
 import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -31,7 +33,8 @@ import java.util.regex.Pattern;
 public class signupActivity extends AppCompatActivity {
 
     Button signUp_button;
-    TextView firstName, middleName, lastName, emailId,phoneNumber, age, password, confirmPassword, signIn;
+    EditText firstName, middleName, lastName, emailId,phoneNumber, age, password, confirmPassword;
+    TextView signIn;
     Spinner gender;
     CountryCodePicker countryCode;
     ProgressBar progressBar;
@@ -47,15 +50,15 @@ public class signupActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
 
-        firstName = (TextView) findViewById(R.id.first_name_editText);
-        middleName = (TextView) findViewById(R.id.middle_name_editText);
-        lastName = (TextView) findViewById(R.id.last_name_editText);
-        emailId = (TextView) findViewById(R.id.emailID_editText);
-        phoneNumber = (TextView) findViewById(R.id.mobile_editText);
+        firstName = (EditText) findViewById(R.id.first_name_editText);
+        middleName = (EditText) findViewById(R.id.middle_name_editText);
+        lastName = (EditText) findViewById(R.id.last_name_editText);
+        emailId = (EditText) findViewById(R.id.emailID_editText);
+        phoneNumber = (EditText) findViewById(R.id.mobile_editText);
         gender = (Spinner) findViewById(R.id.spinner);
-        age = (TextView) findViewById(R.id.age_editText);
-        password = (TextView) findViewById(R.id.password1_editText);
-        confirmPassword = (TextView) findViewById(R.id.password2_editText);
+        age = (EditText) findViewById(R.id.age_editText);
+        password = (EditText) findViewById(R.id.password1_editText);
+        confirmPassword = (EditText) findViewById(R.id.password2_editText);
         signIn = (TextView) findViewById(R.id.sign_in_insted);
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
         signUp_button = (Button) findViewById(R.id.sign_button);
@@ -79,9 +82,10 @@ public class signupActivity extends AppCompatActivity {
                                         user.put("middle_name", middleName.getText().toString());
                                         user.put("last_name", lastName.getText().toString());
                                         user.put("email_id", emailId.getText().toString());
-                                        user.put("Country_Code",countryCode.toString());
-                                        user.put("gender",gender.toString());
+                                        user.put("Country_Code",countryCode.getSelectedCountryCode());
+                                        user.put("gender",gender.getSelectedItem().toString());
                                         user.put("age",age.getText().toString());
+                                        user.put("phone_number",phoneNumber.getText().toString());
                                         user.put("password",password.getText().toString());
 
                                         // Add a new document with a generated ID

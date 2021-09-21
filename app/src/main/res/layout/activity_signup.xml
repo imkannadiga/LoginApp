@@ -285,7 +285,6 @@
                 android:id="@+id/sign_in_insted"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
                 android:layout_marginLeft="100dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="30dp"
