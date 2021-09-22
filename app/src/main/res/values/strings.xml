@@ -1,34 +1,8 @@
 <resources>
-    <string name="app_name">Alpha</string>
-    <string name="gender">Gender</string>
-    <string name="your_age">Your age</string>
-    <string name="first_name">first name</string>
-    <string name="your_phone_number">Your phone number</string>
-    <string name="enter_your_email_id">Enter your email id</string>
-    <string name="last_name">Last name</string>
-    <string name="middle_name">middle name</string>
-    <string name="password">Password</string>
-    <string name="confirm_password">Confirm password</string>
-    <string name="already_have_an_account_log_in">Already have an account?Log in</string>
-    <string name="sign_up">Sign Up</string>
-
-    <string name="submit">Submit</string>
-    <string name="forgot_password">Forgot Password</string>
-    <string name="email">Email</string>
-
-   
-    <string name="your_password">Your password</string>
-    <string name="your_email">Your email</string>
-    <string name="log_in">Log In</string>
-    <string name="don_t_have_an_account_sign_up">Don\'t have an account?Sign up</string>
-    <string-array name="gender_spinner">
-        <item>Select Gender</item>
+    <string name="app_name">little help</string>
+    <string-array name="gender">
         <item>Male</item>
-        <item>female</item>
-        <item>Prefer not to say</item>
-
+        <item>Female</item>
+        <item>Do not want to disclose</item>
     </string-array>
-
-
-
 </resources>
