@@ -1,8 +1,9 @@
 <resources>
-    <string name="app_name">little help</string>
+    <string name="app_name">Little Help</string>
+    <string name="logout">LOGOUT</string>
     <string-array name="gender">
         <item>Male</item>
         <item>Female</item>
-        <item>Do not want to disclose</item>
+        <item>prefer not to say</item>
     </string-array>
 </resources>

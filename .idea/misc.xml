@@ -1,5 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/MY PC/AndroidStudioProjects/LittleHelp/app/src/main/res/drawable/custom_input.xml" value="0.15885416666666666" />
+        <entry key="..\:/Users/MY PC/AndroidStudioProjects/LittleHelp/app/src/main/res/drawable/ic_baseline_email_24.xml" value="0.2755208333333333" />
+        <entry key="..\:/Users/MY PC/AndroidStudioProjects/LittleHelp/app/src/main/res/drawable/ic_custom_person.xml" value="0.15885416666666666" />
+        <entry key="..\:/Users/MY PC/AndroidStudioProjects/LittleHelp/app/src/main/res/drawable/ic_drop_down.xml" value="0.28958333333333336" />
+        <entry key="..\:/Users/MY PC/AndroidStudioProjects/LittleHelp/app/src/main/res/drawable/ic_email_focused.xml" value="0.15885416666666666" />
+        <entry key="..\:/Users/MY PC/AndroidStudioProjects/LittleHelp/app/src/main/res/drawable/ic_lock.xml" value="0.2755208333333333" />
+        <entry key="..\:/Users/MY PC/AndroidStudioProjects/LittleHelp/app/src/main/res/drawable/ic_lock_focused.xml" value="0.15885416666666666" />
+        <entry key="..\:/Users/MY PC/AndroidStudioProjects/LittleHelp/app/src/main/res/drawable/ic_person.xml" value="0.28958333333333336" />
+        <entry key="..\:/Users/MY PC/AndroidStudioProjects/LittleHelp/app/src/main/res/drawable/ic_phone.xml" value="0.28958333333333336" />
+        <entry key="..\:/Users/MY PC/AndroidStudioProjects/LittleHelp/app/src/main/res/drawable/ic_share.xml" value="0.28958333333333336" />
+        <entry key="..\:/Users/MY PC/AndroidStudioProjects/LittleHelp/app/src/main/res/font/amiri.xml" value="0.28958333333333336" />
+        <entry key="..\:/Users/MY PC/AndroidStudioProjects/LittleHelp/app/src/main/res/font/font.xml" value="0.28958333333333336" />
+        <entry key="..\:/Users/MY PC/AndroidStudioProjects/LittleHelp/app/src/main/res/layout/activity_forgot.xml" value="0.2734375" />
+        <entry key="..\:/Users/MY PC/AndroidStudioProjects/LittleHelp/app/src/main/res/layout/activity_loading.xml" value="0.2734375" />
+        <entry key="..\:/Users/MY PC/AndroidStudioProjects/LittleHelp/app/src/main/res/layout/activity_login.xml" value="0.4" />
+        <entry key="..\:/Users/MY PC/AndroidStudioProjects/LittleHelp/app/src/main/res/layout/activity_main.xml" value="0.1927710843373494" />
+        <entry key="..\:/Users/MY PC/AndroidStudioProjects/LittleHelp/app/src/main/res/layout/activity_main2.xml" value="0.2734375" />
+        <entry key="..\:/Users/MY PC/AndroidStudioProjects/LittleHelp/app/src/main/res/layout/activity_signup.xml" value="0.2734375" />
+      </map>
+    </option>
+  </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
