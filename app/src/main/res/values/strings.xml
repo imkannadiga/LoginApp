@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Little Help</string>
+    <string name="logout">LOGOUT</string>
+    <string-array name="gender">
+        <item>Select Gender</item>
+        <item>Male</item>
+        <item>Female</item>
+        <item>prefer not to say</item>
+    </string-array>
+</resources>
