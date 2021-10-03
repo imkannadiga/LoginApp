@@ -172,16 +172,16 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="20dp"
                 android:layout_marginBottom="10dp"
-                android:textColorHighlight="#670404"
-                android:textColorHint="#0E0D0D"
-                android:textColorLink="#100F0F"
-
                 android:drawablePadding="12dp"
                 android:ems="10"
                 android:hint="Age"
+
                 android:inputType="numberDecimal"
                 android:padding="10dp"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
+                android:textColorHighlight="#670404"
+                android:textColorHint="#0E0D0D"
+                android:textColorLink="#100F0F"
 
                 />
 
@@ -193,6 +193,8 @@
         </LinearLayout>
 
         <EditText
+
+
             android:id="@+id/Password"
             android:layout_width="match_parent"
             android:layout_height="44dp"
