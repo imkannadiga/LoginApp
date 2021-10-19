@@ -33,6 +33,9 @@ dependencies {
     // Amplify core dependency
     implementation 'com.amplifyframework:core:1.28.1'
 
+    //Aws database
+    implementation 'com.amplifyframework:aws-datastore:1.28.1'
+
     // Support for Java 8 features
     coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:1.1.5'
 

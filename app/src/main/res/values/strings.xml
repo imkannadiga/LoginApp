@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">TestAWSAmplify</string>
+    <string-array name="gender">
+        <item>Select Gender</item>
+        <item>Male</item>
+        <item>Female</item>
+        <item>prefer not to say</item>
+    </string-array>
 </resources>
