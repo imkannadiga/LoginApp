@@ -240,7 +240,7 @@
                 android:id="@+id/signupbtn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
+                android:onClick="SignUp"
                 android:fontFamily="serif"
                 android:text="Sign UP"
                 android:textColor="#056309"

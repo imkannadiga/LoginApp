@@ -23,6 +23,7 @@ import com.amplifyframework.auth.result.AuthSignInResult;
 import com.amplifyframework.auth.result.AuthSignUpResult;
 import com.amplifyframework.core.Amplify;
 import com.amplifyframework.datastore.AWSDataStorePlugin;
+import com.amplifyframework.datastore.DataStoreItemChange;
 import com.amplifyframework.datastore.generated.model.Userdata;
 
 import org.w3c.dom.Text;
@@ -52,9 +53,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void SignUp(View view) {
         emailv = findViewById(R.id.emailid);
-         firstNamev = findViewById(R.id.Firstname);
-         middleNamev = findViewById(R.id.Midddlename);
-         lastNamev=  findViewById(R.id.Lastname);
+        firstNamev = findViewById(R.id.Firstname);
+        middleNamev = findViewById(R.id.Midddlename);
+        lastNamev=  findViewById(R.id.Lastname);
         mobile = findViewById(R.id.phone);
         age = findViewById(R.id.age_editText);
         passv = findViewById(R.id.Confirmpassword);
@@ -73,31 +74,32 @@ public class MainActivity extends AppCompatActivity {
 
         this.runOnUiThread(new Runnable() {
             public void run() {
-
-               if(result.isSignUpComplete()){
-                    Userdata item = Userdata.builder()
-                            .FirstName(firstNamev.getText().toString())
-                            .MiddleName(middleNamev.getText().toString())
-                            .LastName(lastNamev.getText().toString())
-                            .MobileNo(lastNamev.getText())
-                            .Email(emailv.getText().toString())
-                            .Gender(" ")
-                            .Age(emailv.getText().toString())
-                            .build();
-                    Amplify.DataStore.save(
-                            item,
-                            success -> Log.i("Amplify", "Saved item: " + success.item().getId()),
-                            error -> Log.e("Amplify", "Could not save item to DataStore", error)
-                    );
-                   );
-                }
-
-
-                Toast.makeText(view.getContext(), "Please enter verification code sent to your mail", Toast.LENGTH_LONG).show();
-                startActivity(new Intent(MainActivity.this, ConfirmActivity.class));
+               addUserToDataStore(result);
+               Toast.makeText(view.getContext(), "Please enter verification code sent to your mail", Toast.LENGTH_LONG).show();
+               startActivity(new Intent(MainActivity.this, ConfirmActivity.class));
             }
         });
     }
+
+    private void addUserToDataStore(AuthSignUpResult result) {
+        if(result.isSignUpComplete()){
+            Userdata item = Userdata.builder()
+                    .firstName(firstNamev.getText().toString())
+                    .lastName(lastNamev.getText().toString())
+                    .email(emailv.getText().toString())
+                    .gender(" ")
+                    .age(Integer.parseInt(age.getText().toString()))
+                    .middleName(middleNamev.getText().toString())
+                    .mobileNo(mobile.getText().toString())
+                    .build();
+            Amplify.DataStore.save(
+                    item,
+                    success -> Log.i("Amplify", "Saved item: " + success.item().getId()),
+                    error -> Log.e("Amplify", "Could not save item to DataStore", error)
+            );
+        }
+    }
+
     private void signUpFailure(AuthException error , View view) {
         this.runOnUiThread(new Runnable() {
             public void run() {
