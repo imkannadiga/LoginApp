@@ -18,9 +18,16 @@ import com.amplifyframework.auth.result.AuthResetPasswordResult;
 import com.amplifyframework.core.Amplify;
 import com.amplifyframework.datastore.AWSDataStorePlugin;
 
+import java.util.regex.Pattern;
+
 public class confirmCodeActivity extends AppCompatActivity {
     EditText code , newPassword;
     Button btn;
+    private static final Pattern PASSWORD_PATTERN =
+            Pattern.compile("^" +
+                    "(?=.*[@#$%^&+=])" +     // at least 1 special character
+                    "^.*[a-zA-Z0-9]+.*$" +   // at least one alpha numeric character
+                    "$");
 
 
     @Override
@@ -45,18 +52,22 @@ public class confirmCodeActivity extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Amplify.Auth.confirmResetPassword(
-                        newPassword.getText().toString(),
-                        code.getText().toString(),
-                        () ->   Log.i("AuthQuickstart", "New password confirmed"),
-                        error -> onFailure(error , v)// Log.e("AuthQuickstart", error.toString())
-                );
+                if(validatePassword()){
+                    Amplify.Auth.confirmResetPassword(
+                            newPassword.getText().toString(),
+                            code.getText().toString(),
+                            () -> onSucess(v), // Log.i("AuthQuickstart", "New password confirmed"),//  //
+                            error -> onFailure(error , v)// Log.e("AuthQuickstart", error.toString())
+                    );
+
+                }
+
             }
         });
 
     }
 
-    private void onSucess(AuthResetPasswordResult result, View v ){
+    private void onSucess(View v ){
         this.runOnUiThread(new Runnable() {
             @Override
             public void run() {
@@ -73,5 +84,14 @@ public class confirmCodeActivity extends AppCompatActivity {
                 Toast.makeText(view.getContext(), "Verification failed. Please try again", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    private boolean validatePassword() {
+        String s = newPassword.getText().toString().trim();
+        if(s.isEmpty()){
+            newPassword.setError("Password cannot be empty");
+            return false;
+        }
+        return true;
     }
 }

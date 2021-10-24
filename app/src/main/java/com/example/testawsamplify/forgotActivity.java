@@ -23,8 +23,10 @@ import com.amplifyframework.datastore.AWSDataStorePlugin;
 public class forgotActivity extends AppCompatActivity {
     private EditText email;
     private Button submit;
+    loading loading = new loading(forgotActivity.this);
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forgot);
         email = findViewById(R.id.EmailFP);
@@ -49,6 +51,7 @@ public class forgotActivity extends AppCompatActivity {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                loading.startLoadingDialog();
                 Amplify.Auth.resetPassword(
                         email.getText().toString(),
                         result -> onSuccessful(v, result),
@@ -61,6 +64,7 @@ public class forgotActivity extends AppCompatActivity {
     }
 
     private void onSuccessful(View v, AuthResetPasswordResult result) {
+        loading.stopLoading();
         this.runOnUiThread(new Runnable() {
             public void run() {
 
@@ -73,6 +77,7 @@ public class forgotActivity extends AppCompatActivity {
 
 
     private void onFailure(View v, AuthException error){
+        loading.stopLoading();
         this.runOnUiThread(new Runnable() {
             public void run() {
                 Toast.makeText(v.getContext(), "failed", Toast.LENGTH_SHORT).show();

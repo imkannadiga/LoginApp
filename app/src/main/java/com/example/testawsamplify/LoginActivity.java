@@ -35,7 +35,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private long backPressedTime;
     private Toast backToast;
-
+    loading loading = new loading(LoginActivity.this);
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,10 +55,6 @@ public class LoginActivity extends AppCompatActivity {
         if (checkbox.equals("true")) {
             Intent intent = new Intent(LoginActivity.this, commonActivity.class);
             startActivity(intent);
-        } else if (checkbox.equals("false")) {
-            Toast.makeText(this, "Please Sign In", Toast.LENGTH_SHORT).show();
-
-
         }
         try {
             Amplify.addPlugin(new AWSDataStorePlugin());
@@ -112,9 +108,6 @@ public class LoginActivity extends AppCompatActivity {
         forgotPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
-
                 startActivity(new Intent(LoginActivity.this, forgotActivity.class));
             }
         });
@@ -124,12 +117,17 @@ public class LoginActivity extends AppCompatActivity {
         login_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Amplify.Auth.signIn(
-                        email.getText().toString(),
-                        password.getText().toString(),
-                        result -> signInSuccessfull(result,v),
-                        error -> signInFailure(error,v)
-                );
+                boolean checkEmail = validateEmail();
+                boolean checkPass = validatePassword();
+                if(checkEmail && checkPass){
+                    loading.startLoadingDialog();
+                    Amplify.Auth.signIn(
+                            email.getText().toString(),
+                            password.getText().toString(),
+                            result -> signInSuccessfull(result,v),
+                            error -> signInFailure(error,v)
+                    );
+                }
             }
         });
     }
@@ -137,6 +135,7 @@ public class LoginActivity extends AppCompatActivity {
         this.runOnUiThread(new Runnable() {
             public void run() {
                 Log.i("AuthQuickstart", result.isSignInComplete() ? "Sign in succeeded" : "Sign in not complete");
+                loading.stopLoading();
                 if(result.isSignInComplete())
                     Toast.makeText(view.getContext(), "Sign in successful", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(LoginActivity.this , commonActivity.class ));
@@ -145,8 +144,10 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void signInFailure(AuthException error, View view){
+
         this.runOnUiThread(new Runnable() {
             public void run() {
+                loading.stopLoading();
                 Log.e("AuthQuickstart", error.toString());
                 Toast.makeText(view.getContext(), "Sign in Failure", Toast.LENGTH_SHORT).show();
             }

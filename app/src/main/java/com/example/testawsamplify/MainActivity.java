@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
     static EditText emailv, firstNamev, middleNamev, pass2v, lastNamev, mobile, age, passv;
     static Spinner gender;
 
-
+    loading loading =  new loading(MainActivity.this);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void SignUp(View view) {
+
         emailv = findViewById(R.id.emailid);
         firstNamev = findViewById(R.id.Firstname);
         middleNamev = findViewById(R.id.Midddlename);
@@ -61,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
         gender = findViewById(R.id.spinner);
         //String username = UUID.randomUUID().toString();
         if (validateInputs()) {
+            loading.startLoadingDialog();
             AuthSignUpOptions options = AuthSignUpOptions.builder()
                     .userAttribute(AuthUserAttributeKey.email(), emailv.getText().toString())
                     .build();
@@ -73,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void signUpSuccess(AuthSignUpResult result, View view) {
-
+        loading.stopLoading();
         this.runOnUiThread(new Runnable() {
             public void run() {
                 try {
@@ -139,6 +141,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void signUpFailure(AuthException error, View view) {
+        loading.stopLoading();
         this.runOnUiThread(new Runnable() {
             public void run() {
                 Toast.makeText(view.getContext(), "Sign up Failure", Toast.LENGTH_SHORT).show();
@@ -225,7 +228,7 @@ public class MainActivity extends AppCompatActivity {
 
     private boolean validatePasswords() {
         String s1 = pass2v.getText().toString();
-        String s2 = pass2v.getText().toString();
+        String s2 = passv.getText().toString();
 
         if (s1.isEmpty()) {
             pass2v.setError("password cannot be empty");

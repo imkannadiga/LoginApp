@@ -4,9 +4,10 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
-        android:label="LoginApp"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:icon="@mipmap/logo"
+        android:label="Little help"
+        android:roundIcon="@mipmap/roundlogo"
+
         android:supportsRtl="true"
         android:theme="@style/Theme.TestAWSAmplify">
         <activity
