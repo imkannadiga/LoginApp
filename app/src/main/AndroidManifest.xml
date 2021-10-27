@@ -4,15 +4,27 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
-        android:label="LoginApp"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:icon="@mipmap/logo"
+        android:label="Little help"
+        android:roundIcon="@mipmap/roundlogo"
+
         android:supportsRtl="true"
         android:theme="@style/Theme.TestAWSAmplify">
-        <activity android:name=".LoginActivity"></activity>
-        <activity android:name=".ConfirmActivity"></activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".loading"
+            android:exported="true" />
+        <activity
+            android:name=".confirmCodeActivity"
+            android:exported="true" />
+        <activity
+            android:name=".commonActivity"
+            android:exported="true" />
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".ConfirmActivity" />
+        <activity android:name=".MainActivity" />
+        <activity android:name=".forgotActivity" />
+        <activity
+            android:name=".BootActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
