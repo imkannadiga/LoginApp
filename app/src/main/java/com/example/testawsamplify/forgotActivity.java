@@ -12,7 +12,6 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.amplifyframework.AmplifyException;
-import com.amplifyframework.api.aws.AWSApiPlugin;
 import com.amplifyframework.auth.AuthException;
 import com.amplifyframework.auth.cognito.AWSCognitoAuthPlugin;
 import com.amplifyframework.auth.result.AuthResetPasswordResult;
@@ -32,11 +31,9 @@ public class forgotActivity extends AppCompatActivity {
         email = findViewById(R.id.EmailFP);
         submit = findViewById(R.id.FPbtn);
 
-
+/*
         try {
-
             Amplify.addPlugin(new AWSDataStorePlugin());
-            Amplify.addPlugin(new AWSApiPlugin());
             Amplify.addPlugin(new AWSCognitoAuthPlugin());
             Amplify.configure(getApplicationContext());
             Log.i("MyAmplifyApp", "Initialized Amplify");
@@ -44,6 +41,8 @@ public class forgotActivity extends AppCompatActivity {
             Log.e("MyAmplifyApp", "Could not initialize Amplify");
             e.printStackTrace();
         }
+
+ */
 
 
 
@@ -68,7 +67,7 @@ public class forgotActivity extends AppCompatActivity {
         this.runOnUiThread(new Runnable() {
             public void run() {
 
-                startActivity(new Intent(forgotActivity.this , confirmCodeActivity.class));
+                    startActivity(new Intent(forgotActivity.this , confirmCodeActivity.class));
 
                 }
 

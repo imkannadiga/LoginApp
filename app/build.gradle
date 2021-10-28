@@ -36,7 +36,6 @@ dependencies {
     //Aws database
     implementation 'com.amplifyframework:aws-datastore:1.28.1'
 
-    // Aws api for data sync
     implementation 'com.amplifyframework:aws-api:1.28.1'
 
     // Support for Java 8 features

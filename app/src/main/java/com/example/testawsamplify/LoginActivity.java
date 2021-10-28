@@ -56,16 +56,19 @@ public class LoginActivity extends AppCompatActivity {
             Intent intent = new Intent(LoginActivity.this, commonActivity.class);
             startActivity(intent);
         }
+        /*
         try {
             Amplify.addPlugin(new AWSDataStorePlugin());
-            Amplify.addPlugin(new AWSApiPlugin());
             Amplify.addPlugin(new AWSCognitoAuthPlugin());
+            Amplify.addPlugin(new AWSApiPlugin());
             Amplify.configure(getApplicationContext());
             Log.i("MyAmplifyApp", "Initialized Amplify");
         } catch (AmplifyException e) {
             Log.e("MyAmplifyApp", "Could not initialize Amplify");
             e.printStackTrace();
         }
+
+         */
 
         account.setOnClickListener(new View.OnClickListener() {
             @Override

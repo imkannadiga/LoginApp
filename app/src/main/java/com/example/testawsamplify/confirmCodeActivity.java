@@ -11,7 +11,6 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.amplifyframework.AmplifyException;
-import com.amplifyframework.api.aws.AWSApiPlugin;
 import com.amplifyframework.auth.AuthException;
 import com.amplifyframework.auth.cognito.AWSCognitoAuthPlugin;
 import com.amplifyframework.auth.result.AuthResetPasswordResult;
@@ -37,10 +36,9 @@ public class confirmCodeActivity extends AppCompatActivity {
         btn = findViewById(R.id.button5);
         code = findViewById(R.id.editTextCode);
         newPassword = findViewById(R.id.newpassword);
-
+/*
         try {
             Amplify.addPlugin(new AWSDataStorePlugin());
-            Amplify.addPlugin(new AWSApiPlugin());
             Amplify.addPlugin(new AWSCognitoAuthPlugin());
             Amplify.configure(getApplicationContext());
             Log.i("MyAmplifyApp", "Initialized Amplify");
@@ -48,7 +46,7 @@ public class confirmCodeActivity extends AppCompatActivity {
             Log.e("MyAmplifyApp", "Could not initialize Amplify");
             e.printStackTrace();
         }
-
+ */
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
