@@ -12,6 +12,10 @@ public class loading extends AppCompatActivity {
     Activity activity;
     AlertDialog dialog;
 
+    loading(){
+
+    }
+
     loading(Activity myactivity) {
         activity = myactivity;
     }

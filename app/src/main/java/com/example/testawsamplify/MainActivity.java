@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.amplifyframework.AmplifyException;
 import com.amplifyframework.api.aws.AWSApiPlugin;
+import com.amplifyframework.api.graphql.model.ModelMutation;
 import com.amplifyframework.auth.AuthException;
 import com.amplifyframework.auth.AuthUserAttributeKey;
 import com.amplifyframework.auth.cognito.AWSCognitoAuthPlugin;
@@ -20,6 +21,7 @@ import com.amplifyframework.auth.options.AuthSignUpOptions;
 import com.amplifyframework.auth.result.AuthSignUpResult;
 import com.amplifyframework.core.Amplify;
 import com.amplifyframework.datastore.AWSDataStorePlugin;
+import com.amplifyframework.datastore.DataStoreConfiguration;
 import com.amplifyframework.datastore.DataStoreException;
 import com.amplifyframework.datastore.generated.model.Userdata;
 
@@ -35,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        /*
         try {
 
             Amplify.addPlugin(new AWSDataStorePlugin());
@@ -47,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
             Log.e("MyAmplifyApp", "Could not initialize Amplify");
             e.printStackTrace();
         }
+        */
     }
 
     public void SignUp(View view) {
@@ -105,38 +108,11 @@ public class MainActivity extends AppCompatActivity {
                     success -> Log.i("Amplify", "Saved item: " + success.item().getId()),
                     error -> Log.e("Amplify", "Could not save item to DataStore", error)
             );
-
-
-//            Amplify.API.mutate(ModelMutation.create(item),
-//
-//                    response -> Log.i("MyAmplifyApp", "Todo with id: " + response.getData().getId()),
-//                    error -> Log.e("MyAmplifyApp", "Create failed", error)
-//            );
-
-//            Amplify.addPlugin( AWSDataStorePlugin.builder().dataStoreConfiguration(
-//                    DataStoreConfiguration.builder()
-//                            .syncExpression(Userdata.class, () ->  item.FIRST_NAME.eq(firstNamev.getText().toString()))
-//                            .syncExpression(Userdata.class, () ->  item.LAST_NAME.eq(lastNamev.getText().toString()))
-//                            .syncExpression(Userdata.class, () ->  item.MIDDLE_NAME.eq(middleNamev.getText().toString()))
-//                            .syncExpression(Userdata.class, () ->  item.EMAIL.eq(emailv.getText().toString()))
-//                            .syncExpression(Userdata.class, ()->   item.AGE.eq(Integer.parseInt(age.getText().toString())))
-//                            .syncExpression(Userdata.class, (() -> item.MOBILE_NO.eq(mobile.getText().toString())))
-//                            .syncExpression(Userdata.class,()->    item.GENDER.eq(gender.getSelectedItem().toString()))
-//                            .build())
-//                    .build());
-
-
-//            Amplify.addPlugin(new AWSDataStorePlugin.Builder(DataStoreConfiguration.builder()));
-//            Amplify.addPlugin(new AWSDataStorePlugin.Builder()(DataStoreConfiguration.builder()
-//                    .syncExpression(Userdata.class, () -> Userdata.LAST_NAME.eq(lastNamev.getText().toString()))
-//                    .syncExpression(Userdata.class, () -> Userdata.FIRST_NAME.eq(firstNamev.getText().toString()))
-//                    .syncExpression(Userdata.class, () -> Userdata.MIDDLE_NAME.eq(middleNamev.getText().toString()))
-//                    .syncExpression(Userdata.class, () -> Userdata.EMAIL.eq(emailv.getText().toString()))
-//                    .syncExpression(Userdata.class, ()->Userdata.AGE.eq(Integer.parseInt(age.getText().toString())))
-//                    .syncExpression(Userdata.class, (() -> Userdata.MOBILE_NO.eq(mobile.getText().toString())))
-//                    .syncExpression(Userdata.class,()-> Userdata.GENDER.eq(gender.getSelectedItem().toString()))
-//                    .build()));
-
+            Amplify.API.mutate(
+                    ModelMutation.create(item),
+                    response -> Log.i("MyAmplifyApp", "Added User data with name: "+item.getFirstName()),
+                    error -> Log.e("MyAmplifyApp", "Create failed", error)
+            );
         }
     }
 
