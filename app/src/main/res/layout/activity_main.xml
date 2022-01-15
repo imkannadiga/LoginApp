@@ -32,13 +32,13 @@
                 android:layout_marginRight="75dp"
                 android:fontFamily="serif"
                 android:text="Register"
+                android:textAlignment="center"
                 android:textColor="@color/black"
                 android:textColorHighlight="#670404"
                 android:textColorHint="#171616"
                 android:textColorLink="#171616"
                 android:textSize="38sp"
                 android:textStyle="bold" />
-
 
             <EditText
                 android:id="@+id/Firstname"

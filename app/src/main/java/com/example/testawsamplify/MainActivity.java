@@ -12,18 +12,13 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.amplifyframework.AmplifyException;
-import com.amplifyframework.api.aws.AWSApiPlugin;
-import com.amplifyframework.api.graphql.model.ModelMutation;
 import com.amplifyframework.auth.AuthException;
 import com.amplifyframework.auth.AuthUserAttributeKey;
-import com.amplifyframework.auth.cognito.AWSCognitoAuthPlugin;
 import com.amplifyframework.auth.options.AuthSignUpOptions;
 import com.amplifyframework.auth.result.AuthSignUpResult;
 import com.amplifyframework.core.Amplify;
-import com.amplifyframework.datastore.AWSDataStorePlugin;
-import com.amplifyframework.datastore.DataStoreConfiguration;
 import com.amplifyframework.datastore.DataStoreException;
-import com.amplifyframework.datastore.generated.model.Userdata;
+import com.amplifyframework.datastore.generated.model.User;
 
 
 import java.util.regex.Pattern;
@@ -53,7 +48,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void SignUp(View view) {
-
         emailv = findViewById(R.id.emailid);
         firstNamev = findViewById(R.id.Firstname);
         middleNamev = findViewById(R.id.Midddlename);
@@ -83,7 +77,9 @@ public class MainActivity extends AppCompatActivity {
             public void run() {
                 try {
                     addUserToDataStore(result);
+                    Log.i("ItemAdditionStatus","Item added to Datastore");
                 } catch (AmplifyException e) {
+                    Log.e("ItemAdditionStatus","Item not added to Datastore");
                     e.printStackTrace();
                 }
                 Toast.makeText(view.getContext(), "Please enter verification code sent to your mail", Toast.LENGTH_LONG).show();
@@ -94,25 +90,23 @@ public class MainActivity extends AppCompatActivity {
 
     private void addUserToDataStore(AuthSignUpResult result) throws DataStoreException, AmplifyException {
         if (result.isSignUpComplete()) {
-            Userdata item = Userdata.builder()
-                    .firstName(firstNamev.getText().toString())
-                    .lastName(lastNamev.getText().toString())
-                    .email(emailv.getText().toString())
+            User item = User.builder()
+                    .fname(firstNamev.getText().toString())
+                    .lname(lastNamev.getText().toString())
+                    .mobile(mobile.getText().toString())
+                    .emailid(emailv.getText().toString())
+                    .mname(middleNamev.getText().toString())
                     .gender(gender.getSelectedItem().toString())
                     .age(Integer.parseInt(age.getText().toString()))
-                    .middleName(middleNamev.getText().toString())
-                    .mobileNo(mobile.getText().toString())
                     .build();
             Amplify.DataStore.save(
                     item,
                     success -> Log.i("Amplify", "Saved item: " + success.item().getId()),
                     error -> Log.e("Amplify", "Could not save item to DataStore", error)
             );
-            Amplify.API.mutate(
-                    ModelMutation.create(item),
-                    response -> Log.i("MyAmplifyApp", "Added User data with name: "+item.getFirstName()),
-                    error -> Log.e("MyAmplifyApp", "Create failed", error)
-            );
+        }
+        else{
+            Log.e("SignInStatus", "Sign in failure");
         }
     }
 

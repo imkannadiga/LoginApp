@@ -31,7 +31,6 @@ public class forgotActivity extends AppCompatActivity {
         email = findViewById(R.id.EmailFP);
         submit = findViewById(R.id.FPbtn);
 
-/*
         try {
             Amplify.addPlugin(new AWSDataStorePlugin());
             Amplify.addPlugin(new AWSCognitoAuthPlugin());
@@ -41,11 +40,6 @@ public class forgotActivity extends AppCompatActivity {
             Log.e("MyAmplifyApp", "Could not initialize Amplify");
             e.printStackTrace();
         }
-
- */
-
-
-
 
         submit.setOnClickListener(new View.OnClickListener() {
             @Override

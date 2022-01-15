@@ -32,7 +32,7 @@
         android:id="@+id/textView"
         android:layout_width="221dp"
         android:layout_height="81dp"
-        android:layout_marginTop="232dp"
+        android:layout_marginTop="220dp"
         android:fontFamily="@font/amiri"
         android:padding="10sp"
         android:text="    LOGIN"
@@ -43,7 +43,6 @@
         android:textSize="34sp"
         android:textStyle="normal|bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.539"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
